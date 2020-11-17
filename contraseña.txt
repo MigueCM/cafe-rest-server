@@ -1,0 +1,4 @@
+user:admin
+pass:CsxGfd37HUrOXIOj
+url:
+mongodb+srv://admin:CsxGfd37HUrOXIOj@cluster0.v9ncq.mongodb.net/cafe

@@ -1,0 +1,12 @@
+npm express
+npm body parser
+npm mongoose
+npm mongoose-unique-validator
+npm bcrypt
+npm install underscore
+
+
+subir mongodb(mongo atlas)
+https://cloud.mongodb.com/v2/5fb401848cde4b4de1e1461c#metrics/replicaSet/5fb4031c4449e30bb095349b/explorer/cafe/users/find
+heroku (subir aplicacion node)
+https://www.heroku.com/
