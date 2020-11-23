@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const { verificaToken,verificaAdminRol } = require('../middlewares/authentication');
 
 const express = require('express');
 const bcrypt = require('bcrypt');
@@ -6,8 +7,18 @@ const _ = require('underscore');
 
 const app = express();
 
-app.get('/user', function (req, res) {
+app.get('/user', verificaToken, (req, res) => {
     
+    // para obtener informacion del usuario que hacela peticion
+
+    // return res.json({
+    //     usuario: req.user,
+    //     nombre: req.user.name,
+    //     email: req.user.email
+    // })
+
+    // el flujo normal
+
     let from = req.query.from || 0;
     from = Number(from);
 
@@ -47,7 +58,7 @@ app.get('/user', function (req, res) {
 
 })
   
-app.post('/user', function (req, res) {
+app.post('/user',[verificaToken , verificaAdminRol], function (req, res) {
     let body = req.body;
 
     let user = new User({
@@ -78,7 +89,7 @@ app.post('/user', function (req, res) {
 
 })
   
-app.put('/user/:id', function (req, res) {
+app.put('/user/:id',[verificaToken , verificaAdminRol], function (req, res) {
 
     let id = req.params.id;
     let body = _.pick(req.body,[
@@ -114,7 +125,7 @@ app.put('/user/:id', function (req, res) {
     
 })
 
-app.delete('/user/:id', function (req, res) {
+app.delete('/user/:id',[verificaToken , verificaAdminRol], function (req, res) {
 
     let id = req.params.id;
 
